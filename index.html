@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidency Math Club</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6e8efb;
+            --accent: #a777e3;
+            --light: #f5f5f5;
+            --dark: #333;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-link {
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--dark);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .math-showcase {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .math-showcase h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .events {
+            background-color: white;
+        }
+        
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event {
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .event h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-date {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .setup-guide {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .setup-guide h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .step {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .step-num {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">∑</div>
+                <h1>Presidency Math Club</h1>
+            </div>
+            <p class="subtitle">Exploring the beauty and power of mathematics</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Events</a>
+            <a href="#" class="nav-link">Resources</a>
+            <a href="#" class="nav-link">Contact</a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Our Math Community</h2>
+            <p>Join us in exploring fascinating mathematical concepts, solving challenging problems, and connecting with fellow math enthusiasts.</p>
+            <a href="#" class="btn">Join Our Next Meeting</a>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">∑</div>
+                    <h3>Problem Solving</h3>
+                    <p>Challenge yourself with interesting problems and improve your mathematical thinking skills.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">π</div>
+                    <h3>Math Discussions</h3>
+                    <p>Engage in stimulating conversations about various mathematical topics and concepts.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">=</div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Work together with peers to explore mathematical ideas and solve complex problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="math-showcase">
+        <div class="container">
+            <h2>Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding.</h2>
+            <p>- William Paul Thurston</p>
+        </div>
+    </section>
+    
+    <section class="section events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="event-list">
+                <div class="event">
+                    <h3>Problem Solving Workshop</h3>
+                    <p class="event-date">October 15, 2023 • 3:00 PM</p>
+                    <p>Join us for a hands-on workshop where we'll tackle challenging math problems together.</p>
+                </div>
+                <div class="event">
+                    <h3>Guest Speaker: Dr. Mathematica</h3>
+                    <p class="event-date">October 22, 2023 • 4:00 PM</p>
+                    <p>Dr. Mathematica will discuss the beauty of fractal geometry and its applications.</p>
+                </div>
+                <div class="event">
+                    <h3>Math Competition Prep</h3>
+                    <p class="event-date">October 29, 2023 • 3:30 PM</p>
+                    <p>Prepare for upcoming math competitions with practice problems and strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="setup-guide">
+                <h2>Getting Started with GitHub Pages</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <h3>Create Repository</h3>
+                        <p>Create a new repository named "presidency-math-club" (without the .github.io extension).</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <h3>Upload Files</h3>
+                        <p>Add your HTML, CSS, and JavaScript files to the repository.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <h3>Enable GitHub Pages</h3>
+                        <p>Go to Settings → Pages → Select "main" branch → Click "Save".</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <h3>Visit Your Site</h3>
+                        <p>Your website will be available at: https://yourusername.github.io/presidency-math-club</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Presidency Math Club</h3>
+                    <p>Exploring mathematical concepts, solving problems, and building a community of math enthusiasts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: mathclub@example.com</p>
+                    <p>Meeting: Every Wednesday at 3:00 PM</p>
+                    <p>Location: Science Building, Room 302</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" style="color: #fff;">Upcoming Events</a></p>
+                    <p><a href="#" style="color: #fff;">Math Resources</a></p>
+                    <p><a href="#" style="color: #fff;">Join Our Club</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Presidency Math Club. This site is hosted on GitHub Pages.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
